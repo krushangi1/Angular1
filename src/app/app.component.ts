@@ -12,8 +12,5 @@ export class AppComponent implements OnInit {
   constructor(){}
   title = 'project1';
 
-  loadedFeature='recipe';
-  onNavigate(feature:string){
-    this.loadedFeature=feature;
-  }
+ 
 }
