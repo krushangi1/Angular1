@@ -4,14 +4,14 @@ import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
 import { Recipe } from "./recipe.model";
 
-@Injectable()
+@Injectable() 
 export class RecipeService{  
   recipeChanged= new Subject<Recipe[]>();
 
     constructor(private slService:ShoppingListService){}
 
    
-      recipes:Recipe[];
+      recipes:Recipe[]=[];
     // recipes: Recipe[]=[
     //     new Recipe('French Fries',
     //                 'yummy',
