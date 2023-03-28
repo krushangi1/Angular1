@@ -5,6 +5,7 @@ import { BehaviorSubject, Subject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { User } from "./user.model";
 
+
 export interface AuthResponseData{
     
     idToken:string,
@@ -114,22 +115,26 @@ export class AuthService{
     private handleError(errorRes:HttpErrorResponse){
         let errorMsg='An unknown error ocurred!!'
         
-        if (!errorRes.error || !errorRes.error.error) {
-            console.log('gg');
-            return throwError(errorRes);
-            
+        if (!errorRes.error || !errorRes.error.error) { 
+            return throwError(errorRes);   
           }
+          
+          console.log("88888888888");
+          console.log(errorRes.error.error.message);  
         switch(errorRes.error.error.message){
             case 'EMAIL_EXISTS':
                 errorMsg='email already exist!!';
                 break;
             case 'INVALID_PASSWORD':
-                errorMsg='email already exist!!';
+                errorMsg='This password is not correct.!!';
                 break; 
             case 'EMAIL_NOT_FOUND':
-                errorMsg='email already exist!!';
+                errorMsg='This email does not exist.!!';
                 break;   
         }
+              console.log("888****************88");
+              console.log(errorMsg);
         return throwError(errorMsg);
     }
+   
 }
